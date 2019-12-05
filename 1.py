@@ -15,7 +15,7 @@ def readFile(file):
         return f.read().splitlines()
 
 def main():
-    lines = readFile("1_input.txt")
+    lines = readFile("inout/1_input.txt")
     totalFuel = 0
     for x in range(len(lines)):
         lines[x] = int(lines[x])

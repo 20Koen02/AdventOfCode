@@ -25,7 +25,7 @@ def getCoords(line):
     return answer
 
 def main():
-    first, second = getInput("3_input.txt")
+    first, second = getInput("inout/3_input.txt")
 
     first = getCoords(first)
     second = getCoords(second)

@@ -26,7 +26,7 @@ def writeOutput(file, stack):
     exit()
 
 def main():
-    code = readInput("2_input.txt")
+    code = readInput("inout/2_input.txt")
     ans = 19690720
     reached = False
 
@@ -56,7 +56,7 @@ def main():
                 break
 
 
-    writeOutput("2_output.txt", stack)
+    writeOutput("inout/2_output.txt", stack)
 
 if __name__ == "__main__":
     main()
