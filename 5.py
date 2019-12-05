@@ -104,14 +104,13 @@ def main():
 
         instruction = [int(x) for x in str(stack[instructionPointer])]
         instruction = [0]*(2 - len(instruction)) + instruction
-        op = stack[instructionPointer]
-        parameters = [0, 0, 0]
-        if len(instruction) > 2:
-            op = int(str(instruction[-2]) + str(instruction[-1]))
-            parameters = instruction.copy()
-            del parameters[-2:]
-            parameters.reverse()
-            parameters = parameters + [0]*(2 - len(parameters))
+
+        op = int(str(instruction[-2]) + str(instruction[-1]))
+        
+        parameters = instruction.copy()
+        del parameters[-2:]
+        parameters.reverse()
+        parameters = parameters + [0]*(2 - len(parameters))
 
         stack, instructionPointer = opcodes.get(op)(stack, instructionPointer, parameters)
 
