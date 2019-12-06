@@ -1,42 +1,33 @@
-
-
+import fileinput
 
 def main():
-    orbitMap = getInput()
-
-    bfs(orbitMap, "YOU", "SAN")
-
-    # for x in range(len(orbitMap)):
-    #     currentObject = list(orbitMap.values())[x]
-    #     while True:
-    #         if currentObject == None:
-    #             break
-    #         hops += 1
-    #         currentObject = orbitMap.get(currentObject)
-    # print(hops)
-
-
-def getInput():
-    with open("inout/6_input.txt") as f:
-        file = f.read()
-    lines = file.splitlines()
-    lines.reverse()
-    tree = {}
+    lines = list(fileinput.input("inout/6_input.txt"))
     
+    nodes = {}
+    for line in lines:
+        x, y = line.split(')')
+        nodes[y.strip()] = x
 
-    for x in range(len(lines)):
-        lines[x] = lines[x].split(")")
-        
-        
-    for x in range(len(lines)):
-        if tree.get(lines[x][0]) == None:
-            tree[lines[x][0]] = [lines[x][1]]
-        else:
-            tree[lines[x][0]].append(lines[x][1])
+    san = list(parents('SAN', nodes))
+    you = list(parents('YOU', nodes))
+
+    while True:
+        if san and you and san[-1] == you[-1]:
+            del san[-1]
+            del you[-1]
+
+    ans = len(san) + len(you) - 2
     
+    print(ans)
 
-    print(tree)
-    return lines
+    
+def parents(x, nodes):
+    par = []
+    while x in nodes:
+        par.append(x)
+        x = nodes[x]
+    return par
+
 
 if __name__ == "__main__":
     main()
