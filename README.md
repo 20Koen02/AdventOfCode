@@ -15,5 +15,5 @@ git clone https://github.com/20Koen02/AdventOfCode2020.git
 
 3. Run day 1 (Replace `1` with the day you want to run)
 ```
-deno run 1/main.ts
+deno run -A 1/main.ts
 ```
