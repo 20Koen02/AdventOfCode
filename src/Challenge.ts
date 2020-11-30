@@ -6,17 +6,17 @@ export class Challenge {
   challengeName: string
   solver: SolverBase
   input: string
+  partOne: string
+  partTwo: string
 
   constructor(challengeName: string, Solver: typeof SolverBase) {
     this.challengeName = challengeName;
     this.input = fs.readFileSync(`src/${this.challengeName}/in.txt`, 'utf8');
     this.solver = new Solver(this.input)
 
-    this.solve()
-  }
-
-  solve(): void {
-    fs.writeFileSync(`src/${this.challengeName}/out.txt`, `Part 1: ${this.solvePartOne()}\nPart 2: ${this.solvePartTwo()}`, 'utf8')
+    this.partOne = this.solvePartOne()
+    this.partTwo = this.solvePartTwo()
+    fs.writeFileSync(`src/${this.challengeName}/out.txt`, `Part 1: ${this.partOne}\nPart 2: ${this.partTwo}`, 'utf8')
   }
 
   solvePartOne(): string {

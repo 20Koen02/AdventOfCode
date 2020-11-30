@@ -4,7 +4,6 @@
   "description": "Advent of Code Solutions 2020",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
     "1": "ts-node src/1/Main.ts",
     "2": "ts-node src/2/Main.ts",
     "3": "ts-node src/3/Main.ts",
@@ -30,6 +29,8 @@
     "23": "ts-node src/23/Main.ts",
     "24": "ts-node src/24/Main.ts",
     "25": "ts-node src/25/Main.ts",
+    "build": "tsc",
+    "test": "jest --coverage",
     "template": "ts-node src/template/Main.ts"
   },
   "repository": {
@@ -46,9 +47,12 @@
   "devDependencies": {
     "@types/ascii-art": "^1.4.0",
     "@types/figlet": "^1.2.1",
+    "@types/jest": "^26.0.15",
     "@types/node": "^14.14.10",
     "chalk": "^4.1.0",
     "figlet": "^1.5.0",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4",
     "ts-node": "^9.0.0",
     "typescript": "^4.1.2"
   }
