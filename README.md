@@ -1,4 +1,5 @@
 # AdventOfCode2020
+[![codecov](https://codecov.io/gh/20Koen02/AdventOfCode2020/branch/main/graph/badge.svg?token=YPYCp3MpEx)](https://codecov.io/gh/20Koen02/AdventOfCode2020)
 Advent of Code Solutions 2020
 
 ## 🔧 Technologies
