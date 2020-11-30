@@ -4,6 +4,7 @@
   "description": "Advent of Code Solutions 2020",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "1": "ts-node src/1/Main.ts",
     "2": "ts-node src/2/Main.ts",
     "3": "ts-node src/3/Main.ts",
