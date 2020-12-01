@@ -1,5 +1,5 @@
-import {Challenge} from "../Challenge";
-import {SolverBase} from "../SolverBase";
+import { Challenge } from '../Challenge';
+import { SolverBase } from '../SolverBase';
 
 export const challenge = new Challenge('template', class Solver extends SolverBase {
   // partOne() {
@@ -9,4 +9,4 @@ export const challenge = new Challenge('template', class Solver extends SolverBa
   // partTwo() {
   //   return this.input;
   // }
-})
+});
