@@ -20,12 +20,14 @@ export const challenge = new Challenge('1', class Solver extends SolverBase {
 
   partTwo () {
     let answer: string = '';
+    dance:
     for (let i = 0; i < this.exp.length; i++) {
       const num2: number = 2020 - this.exp[i];
       for (let j = 0; j < this.exp.length; j++) {
         const num3: number = num2 - this.exp[j];
         if (this.exp.includes(num3)) {
           answer = (this.exp[i] * this.exp[j] * num3).toString();
+          break dance;
         }
       }
     }
