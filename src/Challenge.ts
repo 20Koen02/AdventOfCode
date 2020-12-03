@@ -22,14 +22,14 @@ export class Challenge {
   solvePartOne (): string {
     console.time('Part 1');
     const partOne: string = this.solver.partOne();
-    console.timeLog('Part 1', '\t' + chalk.blue(partOne));
+    console.timeLog('Part 1', chalk.blue(partOne));
     return partOne;
   }
 
   solvePartTwo (): string {
     console.time('Part 2');
     const partTwo: string = this.solver.partTwo();
-    console.timeLog('Part 2', '\t' + chalk.blue(partTwo));
+    console.timeLog('Part 2', chalk.blue(partTwo));
     return partTwo;
   }
 }
