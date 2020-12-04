@@ -1,6 +1,6 @@
 import { challenge } from './Main';
 
-describe('template', () => {
+describe('3', () => {
   it('part 1 should equal to 151', async () => {
     expect(challenge.partOne).toEqual('151');
   });
