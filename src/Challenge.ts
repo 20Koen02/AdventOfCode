@@ -12,6 +12,7 @@ export class Challenge {
   constructor (challengeName: string, Solver: typeof SolverBase) {
     this.challengeName = challengeName;
     this.input = fs.readFileSync(`src/${this.challengeName}/in.txt`, 'utf8');
+    this.input = this.input.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
     this.solver = new Solver(this.input);
 
     this.partOne = this.solvePartOne();
