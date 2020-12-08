@@ -48,7 +48,7 @@
   "devDependencies": {
     "@types/ascii-art": "^1.4.0",
     "@types/figlet": "^1.2.1",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.17",
     "@types/node": "^14.14.10",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.0",
