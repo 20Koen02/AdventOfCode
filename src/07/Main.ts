@@ -1,7 +1,7 @@
 import { Challenge } from '../Challenge';
 import { SolverBase } from '../SolverBase';
 
-export const challenge = new Challenge('7', class Solver extends SolverBase {
+export const challenge = new Challenge('07', class Solver extends SolverBase {
   bags: string[] = this.input.split('\n')
 
   partOneContainsGoldBag: Set<string> = new Set<string>()

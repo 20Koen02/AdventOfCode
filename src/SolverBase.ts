@@ -6,10 +6,10 @@ export class SolverBase {
   }
 
   partOne (): string {
-    return 'Part 1 not yet implemented';
+    return 'Part 01 not yet implemented';
   }
 
   partTwo (): string {
-    return 'Part 2 not yet implemented';
+    return 'Part 02 not yet implemented';
   }
 }

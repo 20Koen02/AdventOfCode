@@ -6,7 +6,7 @@ interface Instruction {
   arg: number
 }
 
-export const challenge = new Challenge('8', class Solver extends SolverBase {
+export const challenge = new Challenge('08', class Solver extends SolverBase {
   ops: Instruction[] = this.input.split('\n').map((opLines) => {
     const splitOpLines = opLines.split(' ');
     const instruction: Instruction = {
@@ -49,7 +49,7 @@ export const challenge = new Challenge('8', class Solver extends SolverBase {
       }
       if (visited.includes(pointer)) {
         this.res = accumulator;
-        exitCode = 1; // Exit code 1 - Loop detected
+        exitCode = 1; // Exit code 01 - Loop detected
         halt = true;
       }
     }

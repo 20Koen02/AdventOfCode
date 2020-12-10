@@ -1,7 +1,7 @@
 import { Challenge } from '../Challenge';
 import { SolverBase } from '../SolverBase';
 
-export const challenge = new Challenge('9', class Solver extends SolverBase {
+export const challenge = new Challenge('09', class Solver extends SolverBase {
   nums: number[] = this.input.split('\n').map((line) => {
     return parseInt(line);
   })

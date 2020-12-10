@@ -1,7 +1,7 @@
 import { Challenge } from '../Challenge';
 import { SolverBase } from '../SolverBase';
 
-export const challenge = new Challenge('5', class Solver extends SolverBase {
+export const challenge = new Challenge('05', class Solver extends SolverBase {
   tickets: string[] = this.input.split('\n');
 
   seats: number[] = this.tickets.map((ticket): number => {

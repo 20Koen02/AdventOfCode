@@ -1,7 +1,7 @@
 import { Challenge } from '../Challenge';
 import { SolverBase } from '../SolverBase';
 
-export const challenge = new Challenge('4', class Solver extends SolverBase {
+export const challenge = new Challenge('04', class Solver extends SolverBase {
   reqFields: ReadonlyArray<string> = [
     'byr',
     'iyr',

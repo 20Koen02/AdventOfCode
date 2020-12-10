@@ -8,7 +8,7 @@ interface passwordObject {
   password: string
 }
 
-export const challenge = new Challenge('2', class Solver extends SolverBase {
+export const challenge = new Challenge('02', class Solver extends SolverBase {
   lines: passwordObject[] = this.input.split('\n').map(function (x): passwordObject {
     const splitLines: string[] = x.split(' ');
     const minMax: string[] = splitLines[0].split('-');
