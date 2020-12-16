@@ -35,17 +35,17 @@ export const challenge = new Challenge('16', class Solver extends SolverBase {
         section = line;
         continue;
       }
-      if (section === null) {
+      if (section === 'your ticket:') {
+        myTicket = line.split(',').map((v) => parseInt(v, 10));
+      } else if (section === 'nearby tickets:') {
+        nearbyTickets.push(line.split(',').map((v) => parseInt(v, 10)));
+      } else {
         const [category, value] = line.split(': ');
         const ranges = value.split(' or ').map((rawRange) => {
           const [low, high] = rawRange.split('-');
           return { min: parseInt(low, 10), max: parseInt(high) } as Range;
         });
         fields.set(category, ranges);
-      } else if (section === 'your ticket:') {
-        myTicket = line.split(',').map((v) => parseInt(v, 10));
-      } else if (section === 'nearby tickets:') {
-        nearbyTickets.push(line.split(',').map((v) => parseInt(v, 10)));
       }
     }
     return { fields, myTicket, nearbyTickets };
