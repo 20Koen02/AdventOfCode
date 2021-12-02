@@ -1,8 +1,14 @@
 # Day 1
 
+Use WSL if you use windows.
+
 ### Installation
 
-Use WSL if you use windows.
+```
+sudo apt install build-essential
+```
+
+### Build & run
 
 ```
 make main

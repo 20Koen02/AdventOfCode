@@ -29,7 +29,7 @@ class Main {
     }
 
     public static void main(String[] args) throws Exception {
-        List<String> stepsList = Files.readAllLines(Paths.get("02-java/in.txt"));
+        List<String> stepsList = Files.readAllLines(Paths.get("in.txt"));
         steps = new ArrayList<String>(stepsList);
 
         int[] solution = solve();
