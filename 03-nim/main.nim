@@ -19,17 +19,17 @@ proc getLines(): seq =
 
 var lines = getLines()
 let rotated = rotate2D(lines)
+let bitmask = parseBinInt('1'.repeat(rotated.len))
 
 
-proc powerConsumtion(seq2d: seq[seq[string]]): string =
+proc powerConsumtion(seq2d: seq[seq[string]]): int =
     for x in seq2d:
-        if x.count("1") > x.count("0"):
-            result.add("1")
-        else:
-            result.add("0")
+        result = result or ord(x.count("1") > x.count("0"))
+        result = result shl 1
+    result = result shr 1
 
 
-proc lifeSupport(seq2d: seq[seq[string]], opposite: bool = false): string = 
+proc lifeSupport(seq2d: seq[seq[string]], opposite: bool = false): int = 
     var numbers = seq2d
     var i = 0
 
@@ -44,19 +44,19 @@ proc lifeSupport(seq2d: seq[seq[string]], opposite: bool = false): string =
 
         i += 1
     
-    return numbers[0].join()
+    return parseBinInt(numbers[0].join())
 
 
 proc partOne(): int =
-    let gamma = parseBinInt(powerConsumtion(rotated))
-    let epsilon = gamma xor parseBinInt('1'.repeat(rotated.len))
+    let gamma = powerConsumtion(rotated)
+    let epsilon = gamma xor bitmask
 
     return gamma * epsilon
 
 
 proc partTwo(): int =
-    let oxygen = parseBinInt(lifeSupport(lines))
-    let scrubber = parseBinInt(lifeSupport(lines, true))
+    let oxygen = lifeSupport(lines)
+    let scrubber = lifeSupport(lines, true)
 
     return oxygen * scrubber
 
