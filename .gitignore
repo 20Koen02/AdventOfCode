@@ -1,4 +1,6 @@
 01-cpp/main
-02-java/*.class
+
+**/*.class
+**/*.exe
 
 .vscode
