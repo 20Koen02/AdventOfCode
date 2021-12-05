@@ -10,3 +10,4 @@ Multi-language Advent of Code solutions 2021
 | [Day 02](02-java) | [Java](<https://en.wikipedia.org/wiki/Java_(programming_language)>) |
 | [Day 03](03-nim)  | [Nim](https://nim-lang.org/)                                        |
 | [Day 04](04-ts)   | [TypeScript](https://www.typescriptlang.org/)                       |
+| [Day 05](05-go)   | [Go](https://go.dev/)                                               |
