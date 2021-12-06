@@ -2,9 +2,7 @@
 
 ### Installation
 
-```
 https://go.dev/
-```
 
 ### Run
 
