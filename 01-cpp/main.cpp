@@ -1,53 +1,36 @@
 #include <fstream>
-#include <string>
+#include <iostream>
+#include <iterator>
+#include <tuple>
+#include <vector>
 
-int partOne() {
-  int prev = 0, timesIncreases = 0;
-
+std::vector<double> getNumbers() {
   std::ifstream input("in.txt");
-  for (std::string line; getline(input, line);) {
-    int cur = std::stoi(line);
-    if (prev && cur > prev) {
-      timesIncreases++;
-    }
-    prev = cur;
-  }
-
-  return timesIncreases;
+  std::istream_iterator<double> start(input), end;
+  std::vector<double> numbers(start, end);
+  return numbers;
 }
 
-int partTwo() {
-  int prevSlidingWindow = 0, timesIncreases = 0, prev = 0, prevprev = 0;
+std::tuple<int, int> solve(std::vector<double> n) {
+  int partOne = 0, partTwo = 0;
 
-  std::ifstream input("in.txt");
-  for (std::string line; getline(input, line);) {
-    int cur = std::stoi(line);
-
-    if (!prevprev) {
-      prevprev = cur;
-      continue;
-    }
-    if (!prev) {
-      prev = cur;
-      continue;
-    }
-
-    int slidingWindow = cur + prev + prevprev;
-
-    if (prevSlidingWindow && slidingWindow > prevSlidingWindow) {
-      timesIncreases++;
-    }
-    prevSlidingWindow = slidingWindow;
-    prevprev = prev;
-    prev = cur;
+  for (int i = 0; i < n.size(); i++) {
+    if (i >= 1 && n[i] > n[i - 1])
+      partOne++;
+    if (i >= 3 && n[i] + n[i - 1] + n[i - 2] > n[i - 1] + n[i - 2] + n[i - 3])
+      partTwo++;
   }
 
-  return timesIncreases;
+  return {partOne, partTwo};
 }
 
 int main() {
-  printf("Day 1 part one: %d\n", partOne());
-  printf("Day 1 Part two: %d\n", partTwo());
+  int partOne = 0, partTwo = 0;
+  std::vector<double> nums = getNumbers();
+  std::tie(partOne, partTwo) = solve(nums);
+
+  std::cout << "Day 1 part one: " << partOne << std::endl;
+  std::cout << "Day 1 Part two: " << partTwo << std::endl;
 
   return 0;
 }
