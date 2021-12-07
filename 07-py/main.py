@@ -1,27 +1,28 @@
 def getNumbers() -> list[int]:
     with open("in.txt", "r") as f:
-        return list(map(int, f.readline().strip().split(",")))
+        nums = list(map(int, f.readline().split(',')))
+        nums.sort()
+        return nums
 
 
-def simulate(nums: list[int], alignment: int, linear: bool = True) -> int:
-    fuel = 0
-    for num in nums:
-        distance = abs(num - alignment)
-        fuel += distance if linear else (distance ** 2 + distance) / 2
-    return int(fuel)
+def sum_dist(nums, x) -> int:
+    return sum([(abs(n - x) * (abs(n - x) + 1)) // 2 for n in nums])
 
 
-def solve(nums: list[int], linear: bool = True) -> int:
-    result = None
-    for i in range(min(nums), max(nums)):
-        sim = simulate(nums, i, linear)
-        result = min(result, sim) if result else sim
-    return result
+def solve(nums: list[int]) -> tuple[int, int]:
+    median = nums[len(nums) // 2]
+    partOne = sum(abs(x - median) for x in nums)
+
+    mean = sum(nums) // len(nums)
+    partTwo = min(sum_dist(nums, mean), sum_dist(nums, mean + 1))
+
+    return (partOne, partTwo)
 
 
 def main():
-    print(f"Day 7 part one: {solve(getNumbers())}")
-    print(f"Day 7 part two: {solve(getNumbers(), False)}")
+    partOne, partTwo = solve(getNumbers())
+    print(f"Day 7 part one: {partOne}")
+    print(f"Day 7 part two: {partTwo}")
 
 
 if __name__ == "__main__":
