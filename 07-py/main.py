@@ -12,9 +12,10 @@ def simulate(nums: list[int], alignment: int, linear: bool = True) -> int:
 
 
 def solve(nums: list[int], linear: bool = True) -> int:
-    result = simulate(nums, 0, linear)
-    for i in range(1, max(nums)):
-        result = min(result, simulate(nums, i, linear))
+    result = None
+    for i in range(min(nums), max(nums)):
+        sim = simulate(nums, i, linear)
+        result = min(result, sim) if result else sim
     return result
 
 
