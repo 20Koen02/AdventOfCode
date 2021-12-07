@@ -12,3 +12,4 @@ Multi-language Advent of Code solutions 2021
 | [Day 04](04-ts)   | [TypeScript](https://www.typescriptlang.org/)                       |
 | [Day 05](05-go)   | [Go](https://go.dev/)                                               |
 | [Day 06](06-rust) | [Rust](https://www.rust-lang.org/)                                  |
+| [Day 07](07-py)   | [Python](https://www.python.org/)                                   |
