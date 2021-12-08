@@ -4,9 +4,13 @@
 **/*.exe
 
 .vscode
+.idea
+AdventOfCode2021.iml
 
 node_modules
 package-lock.json
 
 Cargo.lock
 target/
+
+08-kt/*.jar
