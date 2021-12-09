@@ -14,3 +14,4 @@ Multi-language Advent of Code solutions 2021
 | [Day 06](06-rust) | [Rust](https://www.rust-lang.org/)                                  |
 | [Day 07](07-py)   | [Python](https://www.python.org/)                                   |
 | [Day 08](08-kt)   | [Kotlin](https://kotlinlang.org/)                                   |
+| [Day 09](09-js)   | [JavaScript](https://nodejs.org/en/)                                |
