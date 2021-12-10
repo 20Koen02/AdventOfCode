@@ -7,12 +7,13 @@ fn main() {
     let mut day_one = 0;
     let mut day_two_scores: Vec<usize> = Vec::new();
 
-    for block in blocks {
+    '_blocks: for block in blocks {
         let mut stack = Vec::new();
         for c in block.chars() {
             if let Some(i) = CLOSE_TAGS.chars().position(|p| c == p) {
                 if stack.pop() != OPEN_TAGS.chars().nth(i) {
                     day_one += [3, 57, 1197, 25137][i];
+                    continue '_blocks;
                 }
             } else {
                 stack.push(c);
@@ -23,7 +24,6 @@ fn main() {
         });
         day_two_scores.push(day_two_score);
     }
-
     day_two_scores.sort();
     let day_two = day_two_scores[day_two_scores.len() / 2];
     println!("Day 10 part one: {}", day_one);
