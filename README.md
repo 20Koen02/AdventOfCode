@@ -1,6 +1,6 @@
 # Advent of Code
 
-Advent of Code is an advent calendar with small programming puzzles. More information about this can be found [here](https://adventofcode.com/about).
+Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. More information about this can be found [here](https://adventofcode.com/about).
 
 ### Participation
 
