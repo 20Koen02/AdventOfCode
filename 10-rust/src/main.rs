@@ -4,15 +4,15 @@ const CLOSE_TAGS: &str = ")]}>";
 
 fn main() {
     let blocks: Vec<String> = INPUT.trim().split("\n").map(String::from).collect();
-    let mut day_one = 0;
-    let mut day_two_scores: Vec<usize> = blocks
+    let mut part_one = 0;
+    let mut part_two_scores: Vec<usize> = blocks
         .iter()
         .filter_map(|block| {
             let mut stack = Vec::new();
             for c in block.chars() {
                 if let Some(i) = CLOSE_TAGS.chars().position(|p| c == p) {
                     if stack.pop() != OPEN_TAGS.chars().nth(i) {
-                        day_one += [3, 57, 1197, 25137][i];
+                        part_one += [3, 57, 1197, 25137][i];
                         return None;
                     }
                 } else {
@@ -25,8 +25,8 @@ fn main() {
         })
         .collect::<Vec<usize>>();
 
-    day_two_scores.sort();
-    let day_two = day_two_scores[day_two_scores.len() / 2];
-    println!("Day 10 part one: {}", day_one);
-    println!("Day 10 part two: {}", day_two);
+    part_two_scores.sort();
+    let part_two = part_two_scores[part_two_scores.len() / 2];
+    println!("part 10 part one: {}", part_one);
+    println!("part 10 part two: {}", part_two);
 }
