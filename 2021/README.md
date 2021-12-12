@@ -17,3 +17,4 @@ Multi-language Advent of Code solutions 2021
 | [Day 09](09-js)   | [JavaScript](https://nodejs.org/en/)                                |
 | [Day 10](10-rust) | [Rust](https://www.rust-lang.org/)                                  |
 | [Day 11](11-ts)   | [TypeScript](https://www.typescriptlang.org/)                       |
+| [Day 12](12-rust) | [Rust](https://www.rust-lang.org/)                                  |
