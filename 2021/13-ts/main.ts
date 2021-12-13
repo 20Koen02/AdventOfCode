@@ -54,8 +54,8 @@ function fold(instr: Instructions): Instructions {
   instr.dots.forEach((dot) => {
     if (dot[fold.axis] > fold.value) {
       const newDot: Dot = {
-        x: fold.axis === "x" ? fold.value - (dot.x - fold.value) : dot.x,
-        y: fold.axis === "y" ? fold.value - (dot.y - fold.value) : dot.y,
+        x: fold.axis === "x" ? fold.value * 2 - dot.x : dot.x,
+        y: fold.axis === "y" ? fold.value * 2 - dot.y : dot.y,
       };
       if (noOverlap(newDot, instr.dots)) newDots.push(newDot);
     } else newDots.push(dot);
