@@ -20,3 +20,4 @@ Multi-language Advent of Code solutions 2021
 | [Day 12](12-rust) | [Rust](https://www.rust-lang.org/)                                  |
 | [Day 13](13-ts)   | [TypeScript](https://www.typescriptlang.org/)                       |
 | [Day 14](14-rust) | [Rust](https://www.rust-lang.org/)                                  |
+| [Day 15](15-rust) | [Rust](https://www.rust-lang.org/)                                  |
