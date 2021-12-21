@@ -23,3 +23,4 @@ Multi-language Advent of Code solutions 2021
 | [Day 15](15-rust) | [Rust](https://www.rust-lang.org/)                                  |
 | [Day 16](16-rust) | [Rust](https://www.rust-lang.org/)                                  |
 | [Day 17](17-rust) | [Rust](https://www.rust-lang.org/)                                  |
+| [Day 21](21-rust) | [Rust](https://www.rust-lang.org/)                                  |
