@@ -12,10 +12,7 @@ def checkNeverDecrease(num):
     return num == sorted(num)
 
 def checkDouble(num):
-    for x in str(num):
-        if str(num).count(x) == 2:
-            return True
-    return False
+    return any(str(num).count(x) == 2 for x in str(num))
 
 if __name__ == "__main__":
     main()
