@@ -31,7 +31,7 @@ def main():
     reached = False
 
     for x in range(0, 99):
-        if reached == True:
+        if reached is True:
             break
         for y in range(0, 99):
             instructionPointer = 0
