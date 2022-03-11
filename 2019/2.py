@@ -1,4 +1,5 @@
 import collections
+import sys
 
 def sum(stack, instructionPointer):
     out = stack[stack[instructionPointer + 1]] + stack[stack[instructionPointer + 2]]
@@ -23,7 +24,7 @@ def writeOutput(file, stack):
         stack[x] = str(stack[x])
     with open(file, "w+") as f:
         f.write(",".join(stack))
-    exit()
+    sys.exit()
 
 def main():
     code = readInput("inout/2_input.txt")
