@@ -71,7 +71,7 @@ impl PacketParser for &[u8] {
       if chunk[0] == 0 {
         return (
           Packet::Literal {
-            version: version,
+            version,
             value: bits.as_slice().to_int(),
           },
           end + 6,
@@ -114,8 +114,8 @@ impl PacketParser for &[u8] {
 
     (
       Packet::Operator {
-        version: version,
-        type_id: type_id,
+        version,
+        type_id,
         packets,
       },
       end + 6,
