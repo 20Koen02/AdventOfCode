@@ -22,7 +22,7 @@ fn simulate(mut vx: i32, mut vy: i32) -> i32 {
 
 fn part_two() -> i32 {
     (-Y1.abs()..Y1.abs()).fold(0, |acc, vy| {
-        acc + (1..(X2 + 1)).fold(0, |acc, vx| acc + simulate(vx, vy))
+        acc + (1..=X2).fold(0, |acc, vx| acc + simulate(vx, vy))
     })
 }
 
