@@ -1,5 +1,4 @@
 import numpy as np
-from PIL import Image
 
 def getInput():
     with open("inout/8_input.txt") as f:

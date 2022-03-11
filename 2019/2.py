@@ -1,4 +1,3 @@
-import collections
 import sys
 
 def sum(stack, instructionPointer):
