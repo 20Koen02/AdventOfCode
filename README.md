@@ -7,6 +7,7 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 ```rs
                  1111111111222222
         1234567890123456789012345
+2022)                               (00⭐)
 2021)   ******************  *       (38⭐)
 2020)   *******************         (38⭐)
 2019)   ********                    (16⭐)
