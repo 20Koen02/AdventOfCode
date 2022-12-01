@@ -7,7 +7,7 @@ fn sorted_elves() -> Vec<usize> {
     INPUT
         .trim()
         .split("\n\n")
-        .map(|elve| elve.lines().map(|c| c.parse::<usize>().unwrap()).sum())
+        .map(|elf| elf.lines().map(|c| c.parse::<usize>().unwrap()).sum())
         .sorted()
         .rev()
         .collect::<Vec<usize>>()
