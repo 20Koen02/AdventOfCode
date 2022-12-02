@@ -1,21 +1,21 @@
 const INPUT: &str = include_str!("in.txt");
 
-type Strat = Vec<(usize, usize)>;
+type Strat = Vec<(u32, u32)>;
 
 fn get_strat() -> Strat {
     INPUT
         .lines()
         .map(|l| {
             let moves: Vec<u8> = l
-                .split(" ")
-                .map(|m| m.chars().nth(0).unwrap() as u8)
+                .split(' ')
+                .map(|m| m.chars().next().unwrap() as u8)
                 .collect();
-            (moves[0] as usize - 65, moves[1] as usize - 88) // ascii to 0, 1, 2
+            ((moves[0] - b'A') as u32, (moves[1] - b'X') as u32) // ascii to 0, 1, 2
         })
         .collect()
 }
 
-fn part1(strat: Strat) -> usize {
+fn part1(strat: &Strat) -> u32 {
     strat.iter().fold(0, |mut acc, (p2, p1)| {
         if p1 == p2 {
             acc += 3
@@ -26,7 +26,7 @@ fn part1(strat: Strat) -> usize {
     })
 }
 
-fn part2(strat: Strat) -> usize {
+fn part2(strat: &Strat) -> u32 {
     strat.iter().fold(0, |mut acc, (p2, p1)| {
         match p1 {
             0 => acc += (p2 + 2) % 3 + 1,
@@ -40,6 +40,6 @@ fn part2(strat: Strat) -> usize {
 
 fn main() {
     let strat = get_strat();
-    println!("Day 2 part 1: {}", part1(strat.clone()));
-    println!("Day 2 part 2: {}", part2(strat.clone()));
+    println!("Day 2 part 1: {}", part1(&strat));
+    println!("Day 2 part 2: {}", part2(&strat));
 }

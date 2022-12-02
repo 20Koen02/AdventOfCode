@@ -3,14 +3,14 @@ use itertools::Itertools;
 const INPUT: &str = include_str!("in.txt");
 
 /// Vec of calories sorted from highest to lowest
-fn sorted_elves() -> Vec<usize> {
+fn sorted_elves() -> Vec<u32> {
     INPUT
         .trim()
         .split("\n\n")
-        .map(|elf| elf.lines().map(|c| c.parse::<usize>().unwrap()).sum())
+        .map(|elf| elf.lines().map(|c| c.parse::<u32>().unwrap()).sum())
         .sorted()
         .rev()
-        .collect::<Vec<usize>>()
+        .collect::<Vec<u32>>()
 }
 
 fn main() {
@@ -18,6 +18,6 @@ fn main() {
     println!("Day 1 part one: {}", cal_totals[0]);
     println!(
         "Day 1 part two: {}",
-        cal_totals.iter().take(3).sum::<usize>()
+        cal_totals.iter().take(3).sum::<u32>()
     );
 }
