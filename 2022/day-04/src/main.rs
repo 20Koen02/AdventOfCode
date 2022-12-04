@@ -9,15 +9,12 @@ fn get_pairs(input: &str) -> Pairs {
     input
         .lines()
         .map(|line| {
-            line.split(',')
-                .map(|pair| {
-                    pair.split('-')
-                        .map(|n| n.parse::<u32>().unwrap())
-                        .collect_tuple()
-                        .unwrap()
-                })
-                .collect_tuple()
-                .unwrap()
+            let vals = line
+                .split(['-', ','])
+                .map(|v| v.parse::<u32>().unwrap())
+                .collect_tuple::<(_, _, _, _)>()
+                .unwrap();
+            ((vals.0, vals.1), (vals.2, vals.3))
         })
         .collect()
 }
@@ -30,11 +27,11 @@ fn is_overlap(range: &Range, other: &Range) -> bool {
     range.0 <= other.1 && range.1 >= other.0
 }
 
-fn solve<F>(pairs: &Pairs, f: F) -> u32
+fn solve<F>(pairs: &Pairs, f: F) -> usize
 where
     F: Fn(&Range, &Range) -> bool,
 {
-    pairs.iter().map(|(a, b)| f(a, b) as u32).sum()
+    pairs.iter().filter(|(a, b)| f(a, b)).count()
 }
 
 fn main() {
