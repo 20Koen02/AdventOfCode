@@ -1,3 +1,4 @@
+use helper::solved;
 use itertools::Itertools;
 
 const INPUT: &str = include_str!("in.txt");
@@ -14,6 +15,6 @@ fn solve(n: usize) -> usize {
 }
 
 fn main() {
-    println!("Day 6 part 1: {}", solve(4));
-    println!("Day 6 part 2: {}", solve(14));
+    solved!("Day 6 part 1: {}", solve(4), 1287);
+    solved!("Day 6 part 2: {}", solve(14), 3716);
 }

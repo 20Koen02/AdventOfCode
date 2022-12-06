@@ -1,3 +1,5 @@
+use helper::solved;
+
 const INPUT: &str = include_str!("in.txt");
 
 fn get_priority(cc: u8) -> u32 {
@@ -29,6 +31,6 @@ fn part2() -> u32 {
 }
 
 fn main() {
-    println!("Day 3 part 1: {}", part1());
-    println!("Day 3 part 2: {}", part2());
+    solved!("Day 3 part 1: {}", part1(), 7553);
+    solved!("Day 3 part 2: {}", part2(), 2758);
 }

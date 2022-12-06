@@ -1,3 +1,5 @@
+use helper::solved;
+
 const INPUT: &str = include_str!("in.txt");
 
 type Strat = Vec<(u32, u32)>;
@@ -40,6 +42,6 @@ fn part2(strat: &Strat) -> u32 {
 
 fn main() {
     let strat = get_strat();
-    println!("Day 2 part 1: {}", part1(&strat));
-    println!("Day 2 part 2: {}", part2(&strat));
+    solved!("Day 2 part 1: {}", part1(&strat), 13682);
+    solved!("Day 2 part 2: {}", part2(&strat), 12881);
 }

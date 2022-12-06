@@ -1,3 +1,4 @@
+use helper::solved;
 use itertools::Itertools;
 
 const INPUT: &str = include_str!("in.txt");
@@ -36,6 +37,6 @@ where
 
 fn main() {
     let pairs = get_pairs(INPUT);
-    println!("Day 4 part 1: {}", solve(&pairs, is_subset));
-    println!("Day 4 part 2: {}", solve(&pairs, is_overlap));
+    solved!("Day 4 part 1: {}", solve(&pairs, is_subset), 453);
+    solved!("Day 4 part 2: {}", solve(&pairs, is_overlap), 919);
 }

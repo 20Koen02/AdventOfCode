@@ -1,3 +1,4 @@
+use helper::solved;
 use itertools::Itertools;
 
 const INPUT: &str = include_str!("in.txt");
@@ -56,6 +57,14 @@ fn solve(stacks: &Stacks, moves: &Moves, single_crate_pickup: bool) -> String {
 
 fn main() {
     let (stacks, moves) = parse_input();
-    println!("Day 5 part 1: {}", solve(&stacks, &moves, true));
-    println!("Day 5 part 2: {}", solve(&stacks, &moves, false));
+    solved!(
+        "Day 5 part 1: {}",
+        solve(&stacks, &moves, true),
+        "TDCHVHJTG"
+    );
+    solved!(
+        "Day 5 part 2: {}",
+        solve(&stacks, &moves, false),
+        "NGCMPJLHV"
+    );
 }

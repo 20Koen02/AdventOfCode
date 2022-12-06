@@ -1,3 +1,4 @@
+use helper::solved;
 use itertools::Itertools;
 
 const INPUT: &str = include_str!("in.txt");
@@ -15,9 +16,10 @@ fn sorted_elves() -> Vec<u32> {
 
 fn main() {
     let cal_totals = sorted_elves();
-    println!("Day 1 part one: {}", cal_totals[0]);
-    println!(
+    solved!("Day 1 part one: {}", cal_totals[0], 70509);
+    solved!(
         "Day 1 part two: {}",
-        cal_totals.iter().take(3).sum::<u32>()
+        cal_totals.iter().take(3).sum::<u32>(),
+        208567
     );
 }
