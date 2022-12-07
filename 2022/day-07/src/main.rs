@@ -5,15 +5,12 @@ use helper::solved;
 const INPUT: &str = include_str!("in.txt");
 
 fn solve() -> HashMap<String, u32> {
-    let lines: Vec<&'static str> = INPUT.lines().collect();
-    let mut paths_traveled: Vec<String> = vec![];
+    let mut paths_traveled: Vec<String> = vec!["/".to_string()];
     let mut path_sizes: HashMap<String, u32> = HashMap::new();
 
-    // "$ cd /" is only used on line 0
-    paths_traveled.push("/".to_string());
-
-    for cmd in lines[1..].iter() {
-        match cmd.split_whitespace().collect::<Vec<&str>>().as_slice() {
+    for cmd in INPUT.lines().skip(1) {
+        let parts: Vec<&str> = cmd.split(' ').collect();
+        match parts.as_slice() {
             ["dir", ..] | ["$", "ls"] => {}
             ["$", "cd", ".."] => {
                 paths_traveled.pop();
