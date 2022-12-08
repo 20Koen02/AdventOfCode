@@ -1,5 +1,4 @@
 use helper::solved;
-use std::vec;
 
 const INPUT: &str = include_str!("in.txt");
 
