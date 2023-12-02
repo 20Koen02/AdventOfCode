@@ -1,0 +1,8 @@
+[package]
+name = "day-02"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+itertools = "0.12.0"
+helper = { path = "../helper" }
