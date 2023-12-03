@@ -1,5 +1,6 @@
+use std::collections::HashMap;
+
 use helper::solved;
-use itertools::Itertools;
 
 const TEST_INPUT: &str = "467..114..
 ...*......
@@ -77,7 +78,7 @@ fn solve(input: &str) -> (u32, u32) {
     let mut current_number: u32 = 0;
     let mut part_number: u32 = 0;
 
-    let mut gears: Vec<(u32, Vec<(usize, usize)>)> = vec![];
+    let mut gears = HashMap::new();
 
     matrix.iter().enumerate().for_each(|(y, line)| {
         line.iter().enumerate().for_each(|(x, c)| {
@@ -95,16 +96,15 @@ fn solve(input: &str) -> (u32, u32) {
                             part_number += current_number;
                         }
 
-                        gears.push((
-                            current_number,
-                            neighbours
-                                .iter()
-                                .filter_map(|(_, y, x)| match matrix[*y][*x] {
-                                    '0'..='9' | '.' => None,
-                                    _ => Some((*y, *x)),
-                                })
-                                .collect(),
-                        ));
+                        neighbours
+                            .iter()
+                            .filter_map(|(_, y, x)| match matrix[*y][*x] {
+                                '0'..='9' | '.' => None,
+                                _ => Some((*y, *x)),
+                            })
+                            .for_each(|loc| {
+                                gears.entry(loc).or_insert(vec![]).push(current_number);
+                            });
                     }
                 }
                 _ => current_number = 0,
@@ -112,28 +112,18 @@ fn solve(input: &str) -> (u32, u32) {
         });
     });
 
-    let gears_locations: Vec<(usize, usize)> = gears.iter().flat_map(|(_, v)| v.clone()).collect();
+    let gear_total = gears.iter().fold(
+        1,
+        |acc, (_, v)| {
+            if v.len() == 2 {
+                acc * v[0] * v[1]
+            } else {
+                acc
+            }
+        },
+    );
 
-    let sum = gears_locations.iter().unique().fold(0, |acc, (y, x)| {
-        let numbers = gears
-            .iter()
-            .filter_map(|(n, v)| {
-                if v.contains(&(*y, *x)) {
-                    Some(*n)
-                } else {
-                    None
-                }
-            })
-            .collect::<Vec<u32>>();
-
-        if numbers.len() == 2 {
-            acc + numbers.iter().product::<u32>()
-        } else {
-            acc
-        }
-    });
-
-    (part_number, sum)
+    (part_number, gear_total)
 }
 
 fn main() {
