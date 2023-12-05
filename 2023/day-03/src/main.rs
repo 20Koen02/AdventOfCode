@@ -113,10 +113,10 @@ fn solve(input: &str) -> (u32, u32) {
     });
 
     let gear_total = gears.iter().fold(
-        1,
+        0,
         |acc, (_, v)| {
             if v.len() == 2 {
-                acc * v[0] * v[1]
+                acc + v[0] * v[1]
             } else {
                 acc
             }
