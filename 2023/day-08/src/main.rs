@@ -33,53 +33,47 @@ fn part_one(input: &str) -> usize {
     let map = get_map(input);
 
     let mut curr = "AAA".to_string();
-    let mut i = 0;
-    loop {
-        let next = map.instructions[i % map.instructions.len()];
+    let mut steps: usize = 0;
+    while curr != "ZZZ" {
+        let next = map.instructions[steps % map.instructions.len()];
 
         curr = if next == 'L' {
             map.routes[&curr].0.clone()
         } else {
             map.routes[&curr].1.clone()
         };
-        i += 1;
-        if curr == "ZZZ" {
-            break;
-        }
+        steps += 1;
     }
-    i
+    steps
 }
 
 fn part_two(input: &str) -> usize {
     let map = get_map(input);
 
-    let poses = map
+    let start_nodes = map
         .routes
         .keys()
         .filter(|k| k.ends_with('A'))
         .cloned()
         .collect_vec();
 
-    poses
+    start_nodes
         .iter()
         .map(|pos| {
             let mut curr = pos.clone();
-            let mut i = 0;
-            loop {
-                let next = map.instructions[i % map.instructions.len()];
+            let mut steps: usize = 0;
+            while !curr.ends_with('Z') {
+                let next = map.instructions[steps % map.instructions.len()];
                 curr = if next == 'L' {
                     map.routes[&curr].0.clone()
                 } else {
                     map.routes[&curr].1.clone()
                 };
-                i += 1;
-                if curr.ends_with('Z') {
-                    break;
-                }
+                steps += 1;
             }
-            i
+            steps
         })
-        .fold(1, |a, b| a.lcm(&b))
+        .fold(1, |acc, steps| acc.lcm(&steps))
 }
 
 fn main() {
