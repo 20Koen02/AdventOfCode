@@ -1,0 +1,9 @@
+[package]
+name = "day-08"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+num = "0.4.1"
+itertools = { workspace = true }
+helper = { workspace = true }
