@@ -68,6 +68,9 @@ fn get_enclosed(
     let mut inside = false;
     clean_maze.keys().filter(move |(x, y)| {
         let node = clean_maze[(*x, *y)];
+
+        // https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm
+        // If the node is a . and we intersected an odd number of walls, we are inside the loop
         inside ^= ['|', 'J', 'L'].contains(&node);
         inside && node == '.'
     })
