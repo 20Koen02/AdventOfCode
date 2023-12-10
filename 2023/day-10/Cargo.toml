@@ -1,0 +1,10 @@
+[package]
+name = "day-10"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+pathfinding = "4.4.0"
+colored = "2.1.0"
+itertools = { workspace = true }
+helper = { workspace = true }
