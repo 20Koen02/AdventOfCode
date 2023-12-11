@@ -9,12 +9,13 @@ fn get_coords(input: &str) -> Vec<Point> {
     input
         .lines()
         .enumerate()
-        .fold(vec![], |mut acc, (y, line)| {
-            line.chars().enumerate().for_each(|(x, c)| {
-                if c == '#' { acc.push((x, y)); }
-            });
-            acc
+        .flat_map(|(y, line)| {
+            line.chars().enumerate().filter_map(move |(x, c)| match c {
+                '#' => Some((x, y)),
+                _ => None,
+            })
         })
+        .collect()
 }
 
 fn get_empty_idx(idx: Vec<bool>) -> Vec<usize> {
