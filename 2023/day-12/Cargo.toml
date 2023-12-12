@@ -1,0 +1,9 @@
+[package]
+name = "day-12"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+cached = "0.46.1"
+itertools = { workspace = true }
+helper = { workspace = true }
