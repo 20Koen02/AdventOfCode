@@ -4,16 +4,30 @@ use std::collections::HashMap;
 
 const INPUT: &str = include_str!("in.txt");
 
-fn roll_north(map: &mut Vec<Vec<u8>>) {
+// roll the map in the given direction
+// y_dir: -1 = north, 1 = south
+// x_dir: -1 = west, 1 = east
+fn roll(map: &mut Vec<Vec<u8>>, y_dir: isize, x_dir: isize) {
     for y in 0..map.len() {
         for x in 0..map[0].len() {
+            // reverse iteration if y_dir or x_dir is positive
+            let is_pos = y_dir == 1 || x_dir == 1;
+            let mut y = if is_pos { map.len() - 1 - y } else { y };
+            let mut x = if is_pos { map[y].len() - 1 - x } else { x };
+
             if map[y][x] == b'O' {
-                let mut y = y;
-                while y > 0 {
-                    if map[y - 1][x] == b'.' {
-                        map[y - 1][x] = b'O';
+                while (y_dir == -1 && y > 0)
+                    || (y_dir == 1 && y < map.len() - 1)
+                    || (x_dir == -1 && x > 0)
+                    || (x_dir == 1 && x < map[y].len() - 1)
+                {
+                    let y_off = (y as isize + y_dir) as usize;
+                    let x_off = (x as isize + x_dir) as usize;
+                    if map[y_off][x_off] == b'.' {
+                        map[y_off][x_off] = b'O';
                         map[y][x] = b'.';
-                        y -= 1;
+                        y = y_off;
+                        x = x_off;
                     } else {
                         break;
                     }
@@ -21,20 +35,6 @@ fn roll_north(map: &mut Vec<Vec<u8>>) {
             }
         }
     }
-}
-
-fn rotate(map: &Vec<Vec<u8>>) -> Vec<Vec<u8>> {
-    let mut newmap = vec![vec![0; map.len()]; map[0].len()];
-    for r in 0..map.len() {
-        newmap
-            .iter_mut()
-            .enumerate()
-            .take(map[0].len())
-            .for_each(|(c, row)| {
-                row[map.len() - 1 - r] = map[r][c];
-            });
-    }
-    newmap
 }
 
 fn calc_load(map: &Vec<Vec<u8>>) -> usize {
@@ -49,7 +49,7 @@ fn calc_load(map: &Vec<Vec<u8>>) -> usize {
 
 fn part_one(input: &str) -> usize {
     let mut map = input.lines().map(|l| l.as_bytes().to_vec()).collect_vec();
-    roll_north(&mut map);
+    roll(&mut map, -1, 0);
     calc_load(&map)
 }
 
@@ -57,10 +57,10 @@ fn part_two(input: &str) -> usize {
     let mut map = input.lines().map(|l| l.as_bytes().to_vec()).collect_vec();
 
     fn cycle(map: &mut Vec<Vec<u8>>) {
-        (0..4).for_each(|_| {
-            roll_north(map);
-            *map = rotate(map);
-        });
+        roll(map, -1, 0);
+        roll(map, 0, -1);
+        roll(map, 1, 0);
+        roll(map, 0, 1);
     }
 
     let mut seen = HashMap::new();
