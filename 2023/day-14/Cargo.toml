@@ -1,0 +1,8 @@
+[package]
+name = "day-14"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+itertools = { workspace = true }
+helper = { workspace = true }
