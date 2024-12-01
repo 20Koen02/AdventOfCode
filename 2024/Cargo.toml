@@ -1,0 +1,14 @@
+[workspace]
+resolver = "2"
+members = ["helper", "day-01"]
+
+[workspace.package]
+version = "1.0.0"
+edition = "2021"
+
+
+[workspace.dependencies]
+rayon = "1.10.0"
+itertools = "0.13.0"
+num = "0.4.3"
+helper = { path = "./helper" }
