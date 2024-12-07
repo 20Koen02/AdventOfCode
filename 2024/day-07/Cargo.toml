@@ -1,0 +1,10 @@
+[package]
+name = "day-07"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+criterion = "0.4"
+rayon = { workspace = true }
+itertools = { workspace = true }
+helper = { workspace = true }
