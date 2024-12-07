@@ -13,7 +13,8 @@
 #[macro_export]
 macro_rules! solved {
     ($message:literal, $answer:expr, $expect:literal) => {
-        assert_eq!($expect, $answer, "Got {}, expected {}", $answer, $expect);
-        println!($message, $answer);
+        let answer = $answer;
+        assert_eq!($expect, answer, "Got {}, expected {}", answer, $expect);
+        println!($message, answer);
     };
 }
