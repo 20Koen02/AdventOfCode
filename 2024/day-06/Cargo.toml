@@ -1,0 +1,10 @@
+[package]
+name = "day-06"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+colored = "2.1.0"
+rayon = { workspace = true }
+itertools = { workspace = true }
+helper = { workspace = true }
