@@ -1,0 +1,10 @@
+[package]
+name = "day-11"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+itertools = { workspace = true }
+helper = { workspace = true }
+rayon = { workspace = true }
+cached = "0.54.0"

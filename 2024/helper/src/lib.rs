@@ -13,8 +13,10 @@
 #[macro_export]
 macro_rules! solved {
     ($message:literal, $answer:expr, $expect:literal) => {
+        let start = std::time::Instant::now();
         let answer = $answer;
+        let duration = start.elapsed();
         assert_eq!($expect, answer, "Got {}, expected {}", answer, $expect);
-        println!($message, answer);
+        println!(concat!($message, " (took {:.1?})"), answer, duration);
     };
 }
