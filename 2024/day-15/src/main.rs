@@ -37,36 +37,29 @@ fn parse(input: &str, part_two: bool) -> (Vec<Vec<Node>>, Vec<(isize, isize)>, (
     let (map_str, moves_str) = input.trim().split_once("\n\n").unwrap();
 
     let mut robot: (isize, isize) = (0, 0);
-    let map = map_str
-        .lines()
-        .enumerate()
-        .map(|(y, l)| {
-            l.chars()
-                .enumerate()
-                .flat_map(|(x, c)| {
-                    if c == '@' {
-                        robot = (x as isize, y as isize);
-                        if part_two {
-                            robot.0 *= 2;
-                        }
-                    }
-
-                    match c {
-                        '#' if part_two => vec![Node::Wall, Node::Wall],
-                        '#' => vec![Node::Wall],
-
-                        'O' if part_two => vec![Node::BoxLeft, Node::BoxRight],
-                        'O' => vec![Node::Box],
-
-                        '.' | '@' if part_two => vec![Node::Empty, Node::Empty],
-                        '.' | '@' => vec![Node::Empty],
-
-                        _ => unreachable!(),
-                    }
-                })
-                .collect()
-        })
-        .collect();
+    let mut map = vec![vec![]; map_str.lines().count()];
+    for (y, line) in map_str.lines().enumerate() {
+        for (x, c) in line.chars().enumerate() {
+            if c == '@' {
+                robot = (x as isize * (if part_two { 2 } else { 1 }), y as isize);
+            }
+            if part_two {
+                map[y].extend(match c {
+                    '#' => [Node::Wall, Node::Wall],
+                    'O' => [Node::BoxLeft, Node::BoxRight],
+                    '.' | '@' => [Node::Empty, Node::Empty],
+                    _ => unreachable!(),
+                });
+            } else {
+                map[y].push(match c {
+                    '#' => Node::Wall,
+                    'O' => Node::Box,
+                    '.' | '@' => Node::Empty,
+                    _ => unreachable!(),
+                });
+            }
+        }
+    }
 
     let moves = moves_str
         .chars()
@@ -78,9 +71,6 @@ fn parse(input: &str, part_two: bool) -> (Vec<Vec<Node>>, Vec<(isize, isize)>, (
             _ => None,
         })
         .collect();
-
-    assert_ne!(robot.0, 0);
-    assert_ne!(robot.1, 0);
 
     (map, moves, robot)
 }
@@ -118,21 +108,17 @@ fn move_check(map: &mut Vec<Vec<Node>>, robot: &mut (isize, isize), mv: (isize, 
 }
 
 fn gps_result(map: &Vec<Vec<Node>>) -> usize {
-    map.iter()
-        .enumerate()
-        .flat_map(|(y, row)| {
-            row.iter()
-                .enumerate()
-                .map(|(x, node)| {
-                    if node == &Node::Box || node == &Node::BoxLeft {
-                        100 * y + x
-                    } else {
-                        0
-                    }
-                })
-                .collect::<Vec<_>>()
-        })
-        .sum()
+    let mut res = 0;
+
+    for y in 0..map.len() {
+        for x in 0..map[0].len() {
+            if map[y][x] == Node::Box || map[y][x] == Node::BoxLeft {
+                res += 100 * y + x;
+            }
+        }
+    }
+
+    res
 }
 
 fn solve(input: &str, part_two: bool) -> usize {
