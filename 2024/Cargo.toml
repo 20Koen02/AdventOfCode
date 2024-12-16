@@ -17,6 +17,7 @@ members = [
     "day-13",
     "day-14",
     "day-15",
+    "day-16",
 ]
 
 [workspace.package]
@@ -29,5 +30,6 @@ rayon = "1.10.0"
 itertools = "0.13.0"
 num = "0.4.3"
 regex = "1.11.1"
+pathfinding = "4.12.0"
 
 helper = { path = "./helper" }
