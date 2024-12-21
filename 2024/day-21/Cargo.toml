@@ -1,10 +1,9 @@
 [package]
-name = "day-11"
+name = "day-21"
 version.workspace = true
 edition.workspace = true
 
 [dependencies]
 itertools = { workspace = true }
 helper = { workspace = true }
-rayon = { workspace = true }
 cached = { workspace = true }
