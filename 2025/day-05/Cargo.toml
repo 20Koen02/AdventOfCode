@@ -1,0 +1,7 @@
+[package]
+name = "day-05"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+helper = { workspace = true }
