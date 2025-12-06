@@ -15,5 +15,5 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 2020)   *******************         (38⭐)
 2019)   ********                    (16⭐)
 
-Total: 212⭐
+Total: 224⭐
 ```
