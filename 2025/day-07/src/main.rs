@@ -1,5 +1,3 @@
-use std::mem;
-
 use helper::solved;
 
 const TEST_INPUT: &str = ".......S.......
@@ -25,30 +23,21 @@ fn solve(input: &str) -> (u64, u64) {
     let width = grid[0].len();
 
     let mut beams = vec![0u64; width];
-    let mut next = vec![0u64; width];
-    let mut splits: u64 = 0;
-
     beams[width / 2] = 1;
 
-    for &row in grid.iter().skip(1) {
-        next.fill(0);
+    let mut splits: u64 = 0;
 
+    for &row in grid.iter().skip(1) {
         for c in 0..width {
             let k = beams[c];
-            if k == 0 {
-                continue;
-            }
-
-            if row[c] == b'^' {
+            if row[c] == b'^' && k > 0 {
                 splits += 1;
-                next[c - 1] += k;
-                next[c + 1] += k;
-            } else {
-                next[c] += k;
+
+                beams[c] = 0;
+                beams[c - 1] += k;
+                beams[c + 1] += k;
             }
         }
-
-        mem::swap(&mut beams, &mut next);
     }
 
     (splits, beams.iter().sum::<u64>())
