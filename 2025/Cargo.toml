@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["day-01", "day-02", "day-03", "day-04", "day-05", "day-06", "day-07"]
+members = ["day-01", "day-02", "day-03", "day-04", "day-05", "day-06", "day-07", "day-08", "day-09", "day-10", "day-11", "day-12"]
 
 [workspace.package]
 version = "1.0.0"
@@ -15,4 +15,6 @@ cached = "0.56.0"
 pathfinding = "4.14.0"
 colored = "3.0.0"
 itoa = "1.0.15"
+glam = "0.30.9"
+z3 = "0.19.5"
 helper = { path = "./helper" }
